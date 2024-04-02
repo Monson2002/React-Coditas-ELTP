@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+main {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 8;
+  height: 100vh;
+  padding: 1rem;
+}
+
+.user-input-section {
+  display: flex;
+  margin: 1rem;
+  padding: 2rem;
+  flex: 3;
+  flex-direction: column;
+  justify-content: start;
+  border: thin solid #333;
+  box-shadow: 0 0 4px 2px #333;
+  min-height: 90vh;
+}
+
+.user-table-section {
+  display: flex;
+  margin: 1rem;
+  flex: 5;
+  flex-direction: column;
+  justify-content: start;
+  border: thin solid #333;
+  box-shadow: 0 0 4px 2px #333; 
+  min-height: 90vh;
+}
+
+.form-row {
+  margin: 0.5rem;
+}
+
+.form-row label {
+  margin-right: 1rem;
+  justify-content: flex-start;
+}
+
+.user-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.user-table td {
+  text-align: center;
+}
