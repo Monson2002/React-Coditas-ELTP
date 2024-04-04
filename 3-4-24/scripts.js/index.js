@@ -1,4 +1,4 @@
-import { userForm, saveBtn } from "./references.js";
+import { userForm, saveBtn, tBody } from "./references.js";
 import { getFormData, createDOMObj, joinWithParent } from "./utils.js";
 
 let noRows = 0;
@@ -15,8 +15,6 @@ saveBtn.addEventListener('click', (e) => {
   const tdAction = createDOMObj('td', "action", ['Edit', 'Delete']);
   const row = joinWithParent(tRow, [tdName, tdAge, tdContact, tdAction], noRows++);
   
-
-  const tBody = document.querySelector('#user-table-body');
   tBody.appendChild(row);
 
   userForm.reset();

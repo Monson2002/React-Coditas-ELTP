@@ -1,4 +1,3 @@
-// import '../css/utility.css';
 export const getFormData = (formData) => {
   const inputData = new FormData(formData);
   const data = {};
