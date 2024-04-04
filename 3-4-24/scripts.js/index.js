@@ -1,10 +1,23 @@
 import { userForm, saveBtn } from "./references.js";
-import { getFormData } from "./utils.js";
+import { getFormData, createDOMObj, joinWithParent } from "./utils.js";
+
+let noRows = 0;
 
 saveBtn.addEventListener('click', (e) => {
-  console.log(e);
   e.preventDefault();
 
   const parsedData = getFormData(userForm);
-  console.log(parsedData);
+
+  const tRow = createDOMObj('tr');
+  const tdName = createDOMObj('td', "name", parsedData);
+  const tdAge = createDOMObj('td', "age", parsedData);
+  const tdContact = createDOMObj('td', "contact", parsedData);
+  const tdAction = createDOMObj('td', "action", ['Edit', 'Delete']);
+  const row = joinWithParent(tRow, [tdName, tdAge, tdContact, tdAction], noRows++);
+  
+
+  const tBody = document.querySelector('#user-table-body');
+  tBody.appendChild(row);
+
+  userForm.reset();
 })

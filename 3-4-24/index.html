@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
+  <script type="module" src="./scripts.js/index.js" defer></script>
   <link rel="stylesheet" href="./css/utility.css">
   <link rel="stylesheet" href="./css/style.css">
 
-  <script type="module" src="./scripts.js/index.js" defer></script>
 </head>
 <body>
   <main class="main">
@@ -16,22 +16,22 @@
       <form action="" id="user-form">
         <div class="form-row">
           <label for="name" class="">Name</label>
-          <input type="text" name="name" class="">
+          <input type="text" name="name" class="" >
         </div>
         <div class="form-row">
           <label for="age" class="">Age</label>
-          <input type="text" name="age" class="">
+          <input type="text" name="age" class="" >
         </div>
         <div class="form-row">
           <label for="contact" class="">Contact</label>
-          <input type="text" name="contact" class="">
+          <input type="text" name="contact" class="" >
         </div>
         <div class="form-row">
           <label for="address" class="">Address</label>
-          <input type="text" name="address" class="">
+          <input type="text" name="address" class="" >
         </div>
         <div class="form-row">
-          <button class="btn btn-success" id="saveBtn">Save</button>
+          <button class="btn btn-success" id="saveBtn" type="submit">Save</button>
           <button class="btn btn-danger" id="resetBtn" type="reset">Reset</button>
         </div>
       </form>
@@ -46,13 +46,16 @@
             <td>Action</td>
           </tr>
         </thead>
-        <tbody>
-          <tr>
+        <tbody id="user-table-body">
+          <!-- <tr id="user-table-row">
             <td>Monson</td>
             <td>21</td>
             <td>870244</td>
-            <td>svoi;</td>
-          </tr>
+            <td class="action-td">
+              <button id="form-btn-edit" class="form-btn btn btn-success">Edit</button>
+              <button id="form-btn-delete" class="form-btn btn btn-danger">Delete</button>
+            </td>
+          </tr> -->
         </tbody>
       </table>
     </section>

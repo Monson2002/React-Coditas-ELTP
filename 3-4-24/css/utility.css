@@ -2,7 +2,7 @@
 .btn {
   position: relative;
   padding: 0.5rem 1rem;
-  margin: 0 1rem;
+  margin: 0 0.5rem;
   border: thin solid var(--border-color);
   border-radius: .25rem;
   color: var(--color);

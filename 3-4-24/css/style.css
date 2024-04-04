@@ -48,8 +48,20 @@ main {
 .user-table {
   table-layout: fixed;
   width: 100%;
+  padding: 0.5rem;
+}
+
+.user-table thead {
+  font-weight: 600;
+  font-size: large;
 }
 
 .user-table td {
   text-align: center;
+}
+
+.action-td {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
