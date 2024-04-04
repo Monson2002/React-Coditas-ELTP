@@ -6,6 +6,11 @@ let noRows = 0;
 saveBtn.addEventListener('click', (e) => {
   e.preventDefault();
 
+  console.log(userForm);
+  // if (userForm.getAttribute()) {
+    
+  // }
+
   const parsedData = getFormData(userForm);
 
   const tRow = createDOMObj('tr');
@@ -16,6 +21,13 @@ saveBtn.addEventListener('click', (e) => {
   const row = joinWithParent(tRow, [tdName, tdAge, tdContact, tdAction], noRows++);
   
   tBody.appendChild(row);
+  
+  // addFunctionality(row);
 
   userForm.reset();
 })
+
+// function addFunctionality(row) {
+//   const el = document.querySelector(`#user-table-row-${noRows}`)
+//   console.log(el, row);
+// }

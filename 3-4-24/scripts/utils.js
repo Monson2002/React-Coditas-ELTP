@@ -32,6 +32,7 @@ export const createDOMObj = (el, content = 1, userObj) => {
     const object = createElement(el);
     return object;
   } else if (content === 'action') {
+    console.log(userObj);
     const editBtn = createBtnInTd(userObj[0]);
     const deleteBtn = createBtnInTd(userObj[1]);
     const actions = createElement(el);
@@ -50,6 +51,7 @@ export const joinWithParent = (elP, elC, noRows) => {
   elC.forEach(element => {
     elP.appendChild(element);
   });
+  
   elC[3].firstChild.onclick = () => {
     console.log(`Edit ${elP.getAttribute('id')}`);
   };
