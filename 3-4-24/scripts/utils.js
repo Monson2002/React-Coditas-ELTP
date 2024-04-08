@@ -57,6 +57,7 @@ export const joinWithParent = (elP, elC, noRows) => {
   };
   elC[3].lastChild.onclick = () => {
     console.log(`Delete ${elP.getAttribute('id')}`);
+    elP.remove();
   };
   return elP;
 } 
