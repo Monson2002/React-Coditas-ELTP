@@ -60,6 +60,7 @@ const makeRow = (noRows, elC) => {
     elR.appendChild(elC.contact);
     elR.appendChild(elC.city);
     const buttons = createElement('td');
+    buttons.classList.add('buttons-td')
     elR.appendChild(buttons);
     return elR;
 };
