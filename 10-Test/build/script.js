@@ -1,10 +1,12 @@
 "use strict";
-// import { userForm, saveBtn, tBody } from "./references.ts";
-// import { getFormData} from "./utils.ts";
 const userForm = document.querySelector('#user-form');
 const saveBtn = document.querySelector('#saveBtn');
 const resetBtn = document.querySelector('#resetBtn');
 const tBody = document.querySelector('#user-table');
+const nameInputField = document.querySelector('#name');
+const ageInputField = document.querySelector('#age');
+const contactInputField = document.querySelector('#contact');
+const cityInputField = document.querySelector('#city');
 const getFormData = (formData) => {
     const inputData = new FormData(formData);
     const data = {};
@@ -14,28 +16,34 @@ const getFormData = (formData) => {
     return data;
 };
 const createElement = (el) => document.createElement(el);
-const createBtn = (content, noRows) => {
+const createEditBtn = (noRows, tdName, tdAge, tdContact, tdCity) => {
     const btn = createElement('button');
-    btn.textContent = content;
+    btn.textContent = "Edit";
     btn.classList.add('btn');
     btn.classList.add('form-btn');
-    btn.setAttribute('id', `form-btn-${content.toLowerCase()}-${noRows}`);
-    if (content === 'Edit') {
-        btn.classList.add('btn-success');
-        btn.addEventListener('click', () => {
-            var _a;
-            console.log("Edit ", noRows);
-            const row = (_a = btn.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode;
-            const name = row === null || row === void 0 ? void 0 : row.querySelector('#name');
-            console.log(name, row);
-        });
-        return btn;
-    }
+    btn.setAttribute('id', `form-btn-edit-${noRows}`);
+    btn.classList.add('btn-success');
+    btn.addEventListener('click', () => {
+        console.log("Edit ", noRows);
+        const row = document.querySelector(`.row-${noRows}`);
+        nameInputField.value = tdName.innerHTML;
+        ageInputField.value = tdAge.innerHTML;
+        contactInputField.value = tdContact.innerHTML;
+        cityInputField.value = tdCity.innerHTML;
+        btn.parentElement?.parentElement?.remove();
+    });
+    return btn;
+};
+const createDeleteBtn = (noRows) => {
+    const btn = createElement('button');
+    btn.textContent = "Delete";
+    btn.classList.add('btn');
+    btn.classList.add('form-btn');
+    btn.setAttribute('id', `form-btn-delete-${noRows}`);
     btn.classList.add('btn-danger');
     btn.addEventListener('click', () => {
-        var _a, _b;
         console.log("Delete ", noRows);
-        (_b = (_a = btn.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement) === null || _b === void 0 ? void 0 : _b.remove();
+        btn.parentElement?.parentElement?.remove();
     });
     return btn;
 };
@@ -52,26 +60,28 @@ const makeRow = (noRows, elC) => {
     elR.appendChild(elC.contact);
     elR.appendChild(elC.city);
     const buttons = createElement('td');
-    buttons.appendChild(elC.editBtn);
-    buttons.appendChild(elC.deleteBtn);
     elR.appendChild(buttons);
     return elR;
 };
+const addBtn = (btn, row) => {
+    row.lastChild?.appendChild(btn);
+};
 let noRows = 0;
-saveBtn === null || saveBtn === void 0 ? void 0 : saveBtn.addEventListener('click', (e) => {
+saveBtn?.addEventListener('click', (e) => {
     e.preventDefault();
     const parsedData = getFormData(userForm);
-    const tRow = createElement('tr');
     const tdName = createDOMObj('td', "name", parsedData);
     const tdAge = createDOMObj('td', "age", parsedData);
     const tdContact = createDOMObj('td', "contact", parsedData);
     const tdCity = createDOMObj('td', "city", parsedData);
-    const editBtn = createBtn('Edit', noRows);
-    const deleteBtn = createBtn('Delete', noRows);
-    const row = makeRow(noRows, { name: tdName, age: tdAge, contact: tdContact, city: tdCity, editBtn: editBtn, deleteBtn: deleteBtn });
+    const row = makeRow(noRows, { name: tdName, age: tdAge, contact: tdContact, city: tdCity });
     row.classList.add(`row-${noRows}`);
+    const editBtn = createEditBtn(noRows, tdName, tdAge, tdContact, tdCity);
+    const deleteBtn = createDeleteBtn(noRows);
+    addBtn(editBtn, row);
+    addBtn(deleteBtn, row);
     tBody.appendChild(row);
     console.log(row);
     noRows++;
-    // userForm.reset();
+    userForm.reset();
 });

@@ -6,9 +6,11 @@
   <title>Document</title>
 
   <!-- CSS -->
-
+  <link rel="stylesheet" href="../styles/utility.css">
+  <link rel="stylesheet" href="../styles/style.css">
+  
   <!-- TS -->
-  <script type="module" src="./build/script.js " defer></script>
+  <script type="module" src="../build/script.js " defer></script>
 </head>
 <body>
   <main section="main">
@@ -16,19 +18,19 @@
       <form class="user-form" id="user-form">
         <div class="form-row">
           <label for="name" class="">Name</label>
-          <input type="text" name="name" class="" >
+          <input type="text" name="name" id="name" >
         </div>
         <div class="form-row">
           <label for="age" class="">Age</label>
-          <input type="text" name="age" class="" >
+          <input type="text" name="age" id="age" >
         </div>
         <div class="form-row">
           <label for="contact" class="">Contact</label>
-          <input type="text" name="contact" class="" >
+          <input type="text" name="contact" id="contact" >
         </div>
         <div class="form-row">
           <label for="city" class="">City</label>
-          <input type="text" name="city" class="" >
+          <input type="text" name="city" id="city" >
         </div>
         <div class="form-row">
           <button class="btn btn-success" id="saveBtn" type="submit">Save</button>
