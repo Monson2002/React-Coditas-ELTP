@@ -1,5 +1,5 @@
-import { userForm, saveBtn, resetBtn, tBody, nameInputField, ageInputField, contactInputField, cityInputField } from "./references.ts";
-import { TData, UserData, getFormData, createElement, createEditBtn, createDeleteBtn, createDOMObj, makeRow, addBtn } from "./utils.ts";
+import { userForm, saveBtn, tBody } from "./references.js";
+import { getFormData, createEditBtn, createDeleteBtn, createDOMObj, makeRow, addBtn } from "./utils.js";
 
 let noRows = 0;
 
@@ -13,7 +13,7 @@ saveBtn?.addEventListener('click', (e) => {
   const tdContact = createDOMObj('td', "contact", parsedData);
   const tdCity = createDOMObj('td', "city", parsedData);
 
-  const row = makeRow(noRows, { name: tdName, age: tdAge, contact: tdContact, city: tdCity });
+  const row = makeRow({ name: tdName, age: tdAge, contact: tdContact, city: tdCity });
   row.classList.add(`row-${noRows}`);
 
   const editBtn = createEditBtn(noRows, tdName, tdAge, tdContact, tdCity);

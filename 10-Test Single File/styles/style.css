@@ -60,7 +60,7 @@ main {
   text-align: center;
 }
 
-.buttons-td {
+.button-td {
   display: flex;
   justify-content: center;
   align-items: center;

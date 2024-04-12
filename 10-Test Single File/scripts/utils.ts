@@ -1,6 +1,6 @@
-import { nameInputField, ageInputField, contactInputField, cityInputField } from "./references.ts";
+import { nameInputField, ageInputField, contactInputField, cityInputField } from "./references.js";
 
-export type TData = {
+export type FormEntry = {
   [key: string]: FormDataEntryValue
 }
 
@@ -12,9 +12,9 @@ export type UserData = {
 }
 
 export const getFormData = (formData: HTMLFormElement) => {
-  const inputData = new FormData(formData);
-  const data: TData = {};
-  for (const [key, value] of inputData.entries()) {
+  const inpuFormEntry = new FormData(formData);
+  const data: FormEntry = {};
+  for (const [key, value] of inpuFormEntry.entries()) {
     data[key] = value;
   }
   return data;
@@ -54,14 +54,14 @@ export const createDeleteBtn = (noRows: number) => {
   return btn;
 }
 
-export const createDOMObj = (el: string, content: string, userObj: TData) => {
+export const createDOMObj = (el: string, content: string, userObj: FormEntry) => {
   const object = createElement(el);
   object.setAttribute('id', content);
   object.innerText = userObj[content].toString();
   return object;
 }
 
-export const makeRow = (noRows: number, elC: UserData) => {
+export const makeRow = (elC: UserData) => {
   const elR = createElement('tr');
 
   elR.appendChild(elC.name);
@@ -70,7 +70,7 @@ export const makeRow = (noRows: number, elC: UserData) => {
   elR.appendChild(elC.city);
 
   const buttons = createElement('td');
-
+  buttons.classList.add('button-td');
   elR.appendChild(buttons);
   return elR;
 }
