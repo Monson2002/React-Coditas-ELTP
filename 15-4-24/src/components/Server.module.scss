@@ -1,0 +1,58 @@
+.Server {
+  margin: 1rem;
+  padding: 1rem;
+  border: thin solid gray;
+  background-color: whitesmoke;
+  display: inline-block;
+  text-align: center;
+
+  .Header {
+    margin: 0.5rem;
+  }
+
+  .PillOn {
+    position: relative;
+    margin: .5rem;
+    padding: .25rem;
+    border: thin solid rgb(168, 255, 168);
+    background-color: rgb(168, 255, 168);
+    text-align: center;
+    border-radius: .12rem;
+  }
+
+  .PillOn::after {
+    content: '';
+    right: -1rem;
+    top: 0.5rem;
+    padding: .25rem;
+    background-color: rgb(168, 255, 168);
+    position: absolute;
+    border-radius: 50%;  
+  }
+
+  .PillOff {
+    position: relative;
+    margin: 0.5rem;
+    padding: .25rem;
+    border: thin solid rgb(255, 152, 152);
+    background-color: rgb(255, 152, 152);
+    text-align: center;
+    border-radius: .12rem;
+  }
+
+  .PillOff::after {
+    content: '';
+    right: -1rem;
+    top: 0.5rem;
+    padding: .25rem;
+    background-color: rgb(255, 152, 152);
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  .Btn {
+    cursor: pointer;
+    margin: 0.5rem;
+    padding: .125rem;
+  }
+}
