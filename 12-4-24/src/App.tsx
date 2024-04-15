@@ -11,13 +11,7 @@ function App() {
       <div>
         This is App Component.
       </div>
-      <Friend
-        name1="Mayur"
-        name2="Ruchi"
-        name3="Sanket"
-        name4="Janhavi"
-        name5="Vaishnavi"
-      />
+      <Friend names={["Mayur","Ruchi","Sanket","Janhavi","Vaishnavi"]}/>
       <FriendClass/>
       <Server name="Node" status="Running..."/>
       <ServerClass name="Node" status="Running..."/>
