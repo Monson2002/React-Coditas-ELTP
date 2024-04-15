@@ -1,10 +1,21 @@
 import { Component, ReactNode } from "react"
+import styles from './Server.module.css';
 
 const Server = (props: any) => {
   return (
     <>
-      <div>
-        {props.name} is {props.status}
+      <div className={styles.server}>
+        {props.name}
+        {
+          props.status === "On"
+          ? <div className={styles.status}>Online</div>
+          : <div className={styles.status}>Offline</div>
+        }
+        {
+          props.status === "On" 
+          ? <button className={styles.btn}>Stop Server</button>
+          : <button className={styles.btn}>Start Server</button>
+        }
       </div>
     </>
   )
