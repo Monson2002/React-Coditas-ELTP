@@ -1,0 +1,71 @@
+// $bg-color: rgb(178,197,200);
+// $radius: .21rem;
+
+@import "variables";
+
+@mixin flex-center() {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: $bg-color;
+}
+
+.centered {
+  @include flex-center();
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+}
+
+@function darkenColor($color, $amount) {
+  @return darken($color, $amount);
+}
+
+.items {
+  border: thin solid black;
+  border-radius: $radius;
+  background-color: yellow;
+
+  .SpanElement:hover {
+    background-color: darkenColor(lightblue, 40);
+  }
+}
+
+.button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin: 0.25rem;
+}
+
+// .primary {
+//   @extend .button;
+//   background-color: lightblue;
+//   color: #fff;
+// }
+
+// .secondary {
+//   @extend .button;
+//   background-color: #6c757d;
+//   color: #fff;
+// }
+
+@if $button-type == "primary" {
+  .primary {
+    @extend .button;
+    background-color: lightblue;
+    color: #fff;
+  }
+} @else if $button-type == "secondary" {
+  .secondary {
+    @extend .button;
+    background-color: #6c757d;
+    color: #fff;
+  }
+}
