@@ -1,6 +1,6 @@
 import styles from './Server.module.scss';
 
-type ServerType = {
+interface ServerType {
   name: string,
   isActive: boolean
 }
@@ -25,7 +25,7 @@ const Server = (props: ServerType) => {
       <div className={styles.Server}>
         <h2 className={styles.Header}>{props.name}</h2>
         <div>
-          <div className={`${props.isActive ? styles.PillOn : styles.PillOff}`}>
+          <div className={`${styles.Pill} ${props.isActive ? styles.PillOn : styles.PillOff}`}>
             {props.isActive ? "Online" : "Offline"}
           </div>
           <button className={styles.Btn}>
