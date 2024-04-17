@@ -2,7 +2,6 @@ import Server from './components/Server.jsx';
 import styles from './App.module.scss';
 
 function App() {
-
   return (
     <>
       <div className={styles.App}>

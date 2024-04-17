@@ -2,3 +2,12 @@ $primaryColor: #fff;
 $bg-color: cornflowerblue;
 $radius: .2rem;
 $button-type: "secondary";
+
+@mixin flex-center() {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: $bg-color;
+}

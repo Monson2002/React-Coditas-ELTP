@@ -6,7 +6,12 @@ interface ServerType {
 }
 
 const Server = (props: ServerType) => {
-
+  const pillStyleObject = {
+    pillStyle: props.isActive ? styles.PillOn : styles.PillOff,
+    pillText: props.isActive ? "Online" : "Offline",
+    btnStyle: styles.Btn,
+    btnText: props.isActive ? "Stop" : "Start"
+  }
   return (
     <>
       {/* <div className={styles.server}>
@@ -25,11 +30,11 @@ const Server = (props: ServerType) => {
       <div className={styles.Server}>
         <h2 className={styles.Header}>{props.name}</h2>
         <div>
-          <div className={`${styles.Pill} ${props.isActive ? styles.PillOn : styles.PillOff}`}>
-            {props.isActive ? "Online" : "Offline"}
+          <div className={pillStyleObject.pillStyle}>
+            {pillStyleObject.pillText}
           </div>
-          <button className={styles.Btn}>
-            {props.isActive ? "Stop" : "Start"}
+          <button className={pillStyleObject.btnStyle}>
+            {pillStyleObject.btnText}
           </button>
         </div>
       </div>
