@@ -1,0 +1,9 @@
+@import "../../variables";
+
+.Server {
+  @include Server;
+
+  .Header {
+    margin: 0.5rem;
+  }
+}

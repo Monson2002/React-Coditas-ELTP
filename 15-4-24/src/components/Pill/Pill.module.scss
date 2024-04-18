@@ -1,0 +1,9 @@
+@import '../../variables';
+
+.PillOn {
+  @include Pill($bg-success);
+}
+
+.PillOff {
+  @include Pill($bg-danger);
+}

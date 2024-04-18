@@ -1,4 +1,4 @@
-import Server from './components/Server.jsx';
+import Server from './components/Server/Server.js';
 import styles from './App.module.scss';
 
 function App() {
