@@ -1,0 +1,6 @@
+@import '../../variables';
+
+.Btn {
+  @include text;
+  @include counterBtn;
+}

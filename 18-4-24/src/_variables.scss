@@ -1,0 +1,11 @@
+@mixin text {
+  color: darkgray;
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+@mixin counterBtn {
+  background: transparent;
+  cursor: pointer;
+  border: none;
+}
