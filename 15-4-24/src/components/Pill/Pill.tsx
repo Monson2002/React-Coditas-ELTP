@@ -9,4 +9,7 @@ const Pill = (props: {name: string, isActive: boolean}) => {
   )
 }
 
+export const PillOn = () => <Pill name='Online' isActive={true}/>;
+export const PillOff = () => <Pill name='Offline' isActive={false}/>;
+
 export default Pill;
