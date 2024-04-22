@@ -1,0 +1,17 @@
+@import '../../variables';
+
+.Product {
+  @include Product;
+
+  img {
+    @include Img;
+  }
+
+  h2, h3 {
+    margin: .5rem auto;
+  }  
+
+  .Btn {
+    @include Btn;
+  }  
+}
