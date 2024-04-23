@@ -1,0 +1,20 @@
+@mixin Counter {
+  width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+    border-radius: .5rem;
+    padding: 2rem 0;
+}
+
+@mixin Btn {
+  margin: .5rem auto;
+  padding: .25rem .75rem;
+  background-color: black;
+  color: white;
+  border: thin solid black;
+  border-radius: .25rem;
+  cursor: pointer;
+}

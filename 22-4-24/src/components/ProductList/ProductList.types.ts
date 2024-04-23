@@ -1,7 +1,8 @@
-export default interface ProductArray {
+export default interface ProductListProps {
   products: {id: number,
             img: string,
             name: string,
             price: number,
-            btn: string}[]
+            btn: string,}[];
+  alertProd: (name: string) => void;
 }

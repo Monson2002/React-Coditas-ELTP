@@ -3,5 +3,6 @@ export interface ProductProps {
   img: string,
   name: string,
   price: number,
-  btn: string
+  btn: string,
+  alertProd: (name: string) => void
 }

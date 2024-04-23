@@ -1,7 +1,7 @@
-import ProductProps from "./ProductList.types.ts";
+import ProductListProps from "./ProductList.types.ts";
 import Product from "../Product/Product.tsx";
 
-const ProductList = ({products}: ProductProps) => {  
+const ProductList = ({ products, alertProd }: ProductListProps) => {
   return (
     <>
       {products.map((product) => {
@@ -13,8 +13,9 @@ const ProductList = ({products}: ProductProps) => {
             name={product.name}
             price={product.price}
             btn={product.btn}
+            alertProd={() => alertProd(product.name)}
           />
-          )
+        )
       })}
     </>
   )

@@ -1,13 +1,13 @@
 import { ProductProps } from "./Product.types.ts"; 
 import styles from './Product.module.scss';
 
-const Product = (props: ProductProps) => {
+const Product = ({ id, img, name, price, btn, alertProd }: ProductProps) => {  
   return (
     <div className={styles.Product}>
-      <img src={props.img} alt="Image" />
-      <h2>{props.name}</h2>
-      <h3>{props.price}</h3>
-      <button className={styles.Btn}>{props.btn}</button>
+      <img src={img} alt="Image" />
+      <h2>{name}</h2>
+      <h3>{price}</h3>
+      <button className={styles.Btn} onClick={() => alertProd(name)}>{btn}</button>
     </div>
   )
 } 
