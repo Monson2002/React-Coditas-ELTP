@@ -4,18 +4,25 @@ import { useState } from "react";
 import Counter from "./components/Counter/Counter.tsx";
 
 function App() {
-  let [count, setCount] = useState([0,0]);
+  const [countArr, setCountArr] = useState([1,1,2]);
 
-  const increment = (count: number[], index: number) => {
-    const newArr = [...count]
-    newArr[index]++;
-    setCount(newArr);
+  const handleIncrement = (index: number, value: number) => {
+    const newArr = [...countArr]
+    newArr[index] += value;
+    setCountArr(newArr);
+  }
+
+  const handleSquare = (index: number) => {
+    const newArr = [...countArr]
+    newArr[index] = newArr[index]*newArr[index];
+    setCountArr(newArr);
   }
 
   return (
     <div className={styles.App}>
-      <Counter count={count[0]} increment={() => increment(count, 1)}/>
-      <Counter count={count[1]} increment={() => increment(count, 0)}/>
+      <Counter count={countArr[0]} increment={() => handleIncrement(0, 5)}/>
+      <Counter count={countArr[1]} increment={() => handleIncrement(1, 10)}/>
+      <Counter count={countArr[2]} increment={() => handleSquare(2)}/>
     </div>
   )
 }

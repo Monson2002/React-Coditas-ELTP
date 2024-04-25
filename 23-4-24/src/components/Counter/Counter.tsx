@@ -1,8 +1,9 @@
 import styles from './Counter.module.scss';
 import { CounterProps } from './Counter.types.ts';
 
-const Counter = ({ count, increment }: CounterProps) => {
-   
+const Counter = ({ count, increment }: CounterProps) => {  
+  console.log(increment);
+  
   return (
     <div className={styles.Counter}>
       <span>{count}</span>
