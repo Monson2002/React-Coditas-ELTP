@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import main from './App.tsx'
 import './index.css'
+import AppMain from './App.tsx'
 
-const {App} = main;
+const {App, AppClass} = AppMain;
 // const {Friend, FriendClass} = FriendMain;
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <AppClass/>
   </React.StrictMode>,
 )

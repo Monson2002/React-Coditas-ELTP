@@ -1,16 +1,28 @@
+import { Component, ReactNode } from 'react';
 import './App.module.css'
+import CounterMain from "./components/Counter/Counter.tsx";
 
-import Counter from "./components/Counter/Counter.tsx";
-import Sample from "./components/Sample/Sample.tsx";
+const {Counter, CounterClass} = CounterMain;
 
 function App() {
-
   return (
     <>
       <Counter/>
-      <Sample/>
     </>
   )
 }
 
-export default App
+class AppClass extends Component<{}, {}> {
+  constructor(props: {}) {
+    super(props);
+  }
+
+  render(): ReactNode {
+    return <CounterClass/>
+  }
+}
+
+export default {
+  App,
+  AppClass
+}

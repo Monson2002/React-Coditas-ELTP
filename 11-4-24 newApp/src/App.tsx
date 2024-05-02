@@ -1,8 +1,8 @@
 import styles from './App.module.css';
 import { Component, ReactNode } from 'react';
-import main from './components/Friend.jsx'
+import FriendMain from './components/Friend.jsx'
 
-const {Friend} = main;
+const {Friend, FriendClass} = FriendMain;
 
 const App = () => {
   return (
@@ -22,6 +22,7 @@ class AppClass extends Component {
         <div>
         This is App class Component
         </div>
+        <FriendClass/>
       </>
     )
   }

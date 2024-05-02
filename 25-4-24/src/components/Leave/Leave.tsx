@@ -1,5 +1,6 @@
 import { LeaveProps } from "./Leave.types";
 import styles from './Leave.module.scss';
+import { Component, ReactNode } from "react";
 
 const Leave = ({ id, date, desc, actions }: LeaveProps) => {
   return (
@@ -19,4 +20,41 @@ const Leave = ({ id, date, desc, actions }: LeaveProps) => {
   );
 };
 
-export default Leave;  
+class LeaveClass extends Component<{
+  id: number, 
+  date: string, 
+  desc: string, 
+  actions: ((id: number) => JSX.Element)[]
+}, {}> {
+  constructor(props: {
+    id: number, 
+    date: string, 
+    desc: string, 
+    actions: ((id: number) => JSX.Element)[]
+  }) {
+    super(props); 
+  }
+
+  render(): ReactNode {
+    return (
+      <div className={styles.Leave}>
+        <div className={styles.LeaveInfo}>
+          <span>{this.props.date}</span>
+          <span>{this.props.desc}</span>
+        </div>
+        <div className={styles.LeaveActions}>
+          {this.props.actions.map((Btn: any, uid: number) => {
+            return (
+              <Btn key={uid} id={this.props.id}/>  
+            )
+          })}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default {
+  Leave,
+  LeaveClass
+};  

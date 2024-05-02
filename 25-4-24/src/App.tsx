@@ -1,31 +1,41 @@
-import { useEffect, useState } from 'react';
+import { Component, ReactElement, useState } from 'react';
 import styles from './App.module.scss';
-import Dashboard from './components/Dashboard/Dashboard';
-import fetchData from './mock-backend/backend';
-import { Leave } from './components/LeaveList/LeaveList.types';
-// import {leaves} from './data';
+// import fetchData from './mock-backend/backend';
+// import { Leave } from './components/LeaveList/LeaveList.types';
+import { leaves } from './mock-backend/data';
+import DashboardMain from './components/Dashboard/Dashboard';
+
+const {Dashboard, DashboardClass} = DashboardMain;
 
 function App() {
-  
-  const [leaves, setLeaves] = useState<any>([]);
-  
-  useEffect(() => {
-    setLeavesFromBackend();
-  }, [])
 
-  const setLeavesFromBackend = async () => {
-    const data = await fetchData();
-    console.log(data.data);
-    
-    setLeaves(data);
-  }
-  console.log(leaves.data);
-  
+  const [leavesArr, setLeavesArr] = useState<any>(leaves);
+
   return (
     <div className={styles.App}>
-      <Dashboard leaves={leaves.data} setLeaves={setLeaves}/>
+      <Dashboard leaves={leavesArr} setLeaves={setLeavesArr} />
     </div>
   )
 }
 
-export default App;
+class AppClass extends Component<{}, { leavesArr: { id: number, type: string, date: string, desc: string }[] }> {
+  constructor(props: { leavesArr: { id: number, type: string, date: string, desc: string }[] }) {
+    super(props);
+    this.state = {
+      leavesArr: leaves
+    }
+  }
+
+  render(): ReactElement {
+    return (
+      <div className={styles.App}>
+        <DashboardClass leaves={this.state.leavesArr} setLeaves={() => this.setState} />
+      </div>
+    )
+  }
+}
+
+export default {
+  App,
+  AppClass
+};

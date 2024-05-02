@@ -1,6 +1,9 @@
 import styles from './App.module.scss';
+import { Component, ReactNode } from 'react';
 import { data } from "./data.tsx";
-import ProductList from './components/ProductList/ProductList.tsx';
+import ProductListMain from './components/ProductList/ProductList.tsx';
+
+const {ProductList, ProductListClass} = ProductListMain;
 
 function App() {
   return (
@@ -10,4 +13,21 @@ function App() {
   )
 }
 
-export default App
+class AppClass extends Component<{},{}> {
+  constructor(props: {}) {
+    super(props);
+  }
+
+  render(): ReactNode {
+    return (
+      <div className={styles.App}>
+        <ProductListClass products={data} alertProd={(name: string) => alert(`Selected ${name}`)}/>
+      </div>
+    )
+  }
+}
+
+export default {
+  App,
+  AppClass
+}

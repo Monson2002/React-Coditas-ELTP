@@ -1,7 +1,8 @@
+import { Component, ReactElement } from 'react';
 import { ButtonInterface } from '../../App.types';
 import styles from './Button.module.scss';
 
-const Button = (props: ButtonInterface<string>) => {  
+const Button = (props: ButtonInterface<string>) => {
   return (
     <button className={styles.Btn}>
       {props.text}
@@ -9,4 +10,20 @@ const Button = (props: ButtonInterface<string>) => {
   )
 }
 
-export default Button;
+class ButtonClass extends Component<{ text: string }, {}> {
+  constructor(props: { text: string }) {
+    super(props);
+  }
+  render(): ReactElement {
+    return (
+      <button className={styles.Btn}>
+        {this.props.text}
+      </button>
+    )
+  }
+}
+
+export default {
+  Button,
+  ButtonClass
+};
