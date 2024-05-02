@@ -13,12 +13,17 @@ const Friend = (props: any) => {
   )
 }
 
-class FriendClass extends Component {
+class FriendClass extends Component<{names: string[]}, {}> {
+  constructor(props: {names: string[]}) {
+    super(props);
+  }
   render(): ReactNode {
     return (
-      <div className={styles.friend}>
-        This is Friend Class Component.
-      </div>
+      <ul className={styles.friend}>
+        {this.props.names.map((name: string, index: number) => {
+          return <li key={index}>{name}</li>;
+        })}
+      </ul>
     )
   }
 }
