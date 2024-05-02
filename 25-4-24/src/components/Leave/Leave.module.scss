@@ -1,0 +1,21 @@
+.Leave { 
+    display: flex;
+    justify-content: space-between;
+    border: thin solid bisque;
+    background-color: bisque;
+    min-width: calc(100vw / 3 - 6rem);
+    margin: .5rem 0;
+    padding: 1rem;
+
+    .LeaveInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .LeaveActions {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+} 

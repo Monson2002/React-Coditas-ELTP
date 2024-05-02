@@ -1,0 +1,21 @@
+.LeaveList { 
+    margin: 1rem;
+    padding: 1rem;
+    border: thin solid black;
+    width: calc(100vw / 3);
+    height: calc(100vh - 2rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 100vh;
+    overflow: scroll;
+    overflow-x: hidden;
+} 
+.Scroller {
+    overflow-y: scroll;
+    scrollbar-color: yellow transparent;
+    scroll-behavior: smooth;
+    scroll-snap-align: center;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;  
+}

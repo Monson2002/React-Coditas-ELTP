@@ -9,15 +9,15 @@ function App() {
   // const [plannedStateArr, setPlannedStateArr] = useState(planned);
   // const [sickStateArr, setSickStateArr] = useState(sick);
   // console.log(mandatoryStateArr, plannedStateArr, sickStateArr);
-  console.log(mandatory);
-  
+  // console.log(mandatory);
+  const combinedArr = [...mandatory, ...sick, ...planned];
   return (
     <main className={styles.App}>
       <Header title="Leaves"/>
       <section className={styles.Section}>
-        <LeaveContaianer type='mandatory' data={mandatory}/>
-        <LeaveContaianer type='sick' data={sick}/>
-        <LeaveContaianer type='planned' data={planned}/>
+        <LeaveContaianer type='mandatory' data={combinedArr}/>
+        <LeaveContaianer type='sick' data={combinedArr}/>
+        <LeaveContaianer type='planned' data={combinedArr}/>
       </section>
     </main>
   )

@@ -2,12 +2,12 @@ export let mandatory = [
   {
     id: 2,
     title: "Nagpur Day",
-    category: 0,
+    category: "mandatory",
   },
   {
     id: 1,
     title: "Maharashtra Day",
-    category: 0,
+    category: "mandatory",
   },
 ]
 
@@ -15,12 +15,12 @@ export let planned = [
   {
     id: 4,
     title: "Mumbai Day",
-    category: 1,
+    category:"planned",
   },
   {
     id: 5,
     title: "Delhi Day",
-    category: 1,
+    category: "planned",
   }
 ]
 
@@ -28,6 +28,6 @@ export let sick = [
   {
     id: 3,
     title: "Yavatmal Day",
-    category: 2,
+    category: "sick",
   }
 ]
