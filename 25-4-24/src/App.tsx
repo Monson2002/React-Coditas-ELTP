@@ -1,4 +1,4 @@
-import { Component, ReactElement, useState } from 'react';
+import { Component, ReactElement } from 'react';
 import styles from './App.module.scss';
 // import fetchData from './mock-backend/backend';
 // import { Leave } from './components/LeaveList/LeaveList.types';
@@ -9,11 +9,11 @@ const {Dashboard, DashboardClass} = DashboardMain;
 
 function App() {
 
-  const [leavesArr, setLeavesArr] = useState<any>(leaves);
+  // const [leavesArr, setLeavesArr] = useState<any>(leaves);
 
   return (
     <div className={styles.App}>
-      <Dashboard leaves={leavesArr} setLeaves={setLeavesArr} />
+      <Dashboard leaves={leaves} />
     </div>
   )
 }
@@ -29,7 +29,7 @@ class AppClass extends Component<{}, { leavesArr: { id: number, type: string, da
   render(): ReactElement {
     return (
       <div className={styles.App}>
-        <DashboardClass leaves={this.state.leavesArr} setLeaves={() => this.setState} />
+        <DashboardClass leaves={this.state.leavesArr} />
       </div>
     )
   }

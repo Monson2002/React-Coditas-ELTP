@@ -6,9 +6,9 @@ import LeaveListMain from "../LeaveList/LeaveList";
 
 const {LeaveList, LeaveListClass} = LeaveListMain;
 
-const Dashboard = ({ leaves, setLeaves }: DashboardProps) => {
+const Dashboard = ({ leaves }: DashboardProps) => {
   const [leaveArr, setLeaveArr] = useState(leaves);
-  console.log(leaveArr, setLeaveArr, setLeaves);
+  // console.log(leaveArr, setLeaveArr, setLeaves);
   
   const handleClick = (text: string, btn: any) => {
     const card = leaves.find((leave) => leave.id === btn.id);
@@ -52,11 +52,11 @@ const Dashboard = ({ leaves, setLeaves }: DashboardProps) => {
 };
 
 
-class DashboardClass extends Component<{leaves: Leave[], setLeaves: Dispatch<SetStateAction<Leave[]>>},
+class DashboardClass extends Component<{leaves: Leave[]},
 {
   leavesArr: Leave[]
 }> {
-  constructor(props: {leaves: Leave[], setLeaves: Dispatch<SetStateAction<Leave[]>>}) {
+  constructor(props: {leaves: Leave[]}) {
     super(props);
     this.state = {
       leavesArr: this.props.leaves
@@ -93,9 +93,12 @@ class DashboardClass extends Component<{leaves: Leave[], setLeaves: Dispatch<Set
   render(): ReactNode {
     return (
      <div className={styles.Dashboard}>
-        <LeaveListClass type="Planned" leaves={this.state.leavesArr} actions={[this.mandatoryBtn, this.sickBtn]} />
-        <LeaveListClass type="Mandatory" leaves={this.state.leavesArr} actions={[this.sickBtn, this.plannedBtn]} />
-        <LeaveListClass type="Sick" leaves={this.state.leavesArr} actions={[this.mandatoryBtn, this.plannedBtn]} />
+        <LeaveListClass type="Planned" leaves={this.state.leavesArr} actions={
+          [(id) => this.mandatoryBtn(id), (id) => this.sickBtn(id)]} />
+        <LeaveListClass type="Mandatory" leaves={this.state.leavesArr} actions={
+          [(id) => this.sickBtn(id), (id) => this.plannedBtn(id)]} />
+        <LeaveListClass type="Sick" leaves={this.state.leavesArr} actions={
+          [(id) => this.mandatoryBtn(id), (id) => this.plannedBtn(id)]} />
       </div>
     );
   }

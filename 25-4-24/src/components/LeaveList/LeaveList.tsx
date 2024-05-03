@@ -6,7 +6,9 @@ import LeaveMain from "../Leave/Leave";
 
 const {Leave, LeaveClass} = LeaveMain;
 
-const LeaveList = ({ type, leaves, actions }: LeaveListProps) => {     
+const LeaveList = ({ type, leaves, actions }: LeaveListProps) => {   
+  console.log(actions);
+    
   return ( 
     <div className={`${styles.LeaveList} ${styles.Scroller}`}> 
       <h2>{type}</h2>
@@ -31,8 +33,9 @@ class LeaveListClass extends Component<{
   ) {
     super(props);
   }
-
+  
   render(): ReactNode {
+    console.log(this.props.actions);
     return ( 
       <div className={`${styles.LeaveList} ${styles.Scroller}`}> 
         <h2>{this.props.type}</h2>
