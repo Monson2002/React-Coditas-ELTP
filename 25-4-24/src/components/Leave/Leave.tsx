@@ -36,6 +36,8 @@ class LeaveClass extends Component<{
   }
 
   render(): ReactNode {
+    // console.log(this.props);
+    
     return (
       <div className={styles.Leave}>
         <div className={styles.LeaveInfo}>

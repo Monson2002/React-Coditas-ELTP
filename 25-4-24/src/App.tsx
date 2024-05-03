@@ -1,8 +1,9 @@
-import { Component, ReactElement } from 'react';
+import { Component, ReactNode } from 'react';
 import styles from './App.module.scss';
 // import fetchData from './mock-backend/backend';
-// import { Leave } from './components/LeaveList/LeaveList.types';
+import { Leave } from './components/LeaveList/LeaveList.types';
 import { leaves } from './mock-backend/data';
+import fetchData from './mock-backend/backend';
 import DashboardMain from './components/Dashboard/Dashboard';
 
 const {Dashboard, DashboardClass} = DashboardMain;
@@ -13,20 +14,34 @@ function App() {
 
   return (
     <div className={styles.App}>
-      <Dashboard leaves={leaves} />
+      <DashboardClass leaves={leaves} />
     </div>
   )
 }
 
-class AppClass extends Component<{}, { leavesArr: { id: number, type: string, date: string, desc: string }[] }> {
-  constructor(props: { leavesArr: { id: number, type: string, date: string, desc: string }[] }) {
+class AppClass extends Component<{}, { leavesArr: Leave[] }> {
+  constructor(props: { leavesArr: Leave[] }) {
     super(props);
     this.state = {
-      leavesArr: leaves
+      leavesArr: [],
     }
   }
 
-  render(): ReactElement {
+  async fetch() {
+    const data = await fetchData();
+    // console.log(data);
+    const response = data.data;
+    this.setState({
+      leavesArr: [...response]
+    })    
+  }
+
+  componentDidMount() {
+    this.fetch();    
+  }
+
+  render(): ReactNode {
+    
     return (
       <div className={styles.App}>
         <DashboardClass leaves={this.state.leavesArr} />

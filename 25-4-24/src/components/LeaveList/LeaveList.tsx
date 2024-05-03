@@ -35,7 +35,7 @@ class LeaveListClass extends Component<{
   }
   
   render(): ReactNode {
-    console.log(this.props.actions);
+    // console.log(this.props);
     return ( 
       <div className={`${styles.LeaveList} ${styles.Scroller}`}> 
         <h2>{this.props.type}</h2>

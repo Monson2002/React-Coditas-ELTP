@@ -1,11 +1,11 @@
 import { leaves } from "./data";
 import { Leave } from "../components/LeaveList/LeaveList.types";
 
-const fetchData = (): Promise<{data: Leave[], error: any}> => {
+const fetchData = (): Promise<{data: Leave[]}> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (leaves) resolve({data: leaves, error: null});
-      reject({data: null, error: {message: 'An error'}})
+      if (leaves) resolve({data: leaves});
+      reject({data: 'An error'})
     }, 1000);
   })
 }

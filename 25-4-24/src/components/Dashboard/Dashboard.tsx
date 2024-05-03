@@ -58,14 +58,11 @@ class DashboardClass extends Component<{leaves: Leave[]},
 }> {
   constructor(props: {leaves: Leave[]}) {
     super(props);
-    this.state = {
-      leavesArr: this.props.leaves
-    }
   }
 
   handleClick(text: string, btn: any) {
-    const card = this.state.leavesArr.find((leave) => leave.id === btn.id);
-    const remaining = this.state.leavesArr.filter((leave) => leave.id !== btn.id)
+    const card = this.props.leaves.find((leave) => leave.id === btn.id);
+    const remaining = this.props.leaves.filter((leave) => leave.id !== btn.id)
     console.log(`${text} Clicked`, card);
     if (text === 'S') {
       card!.type = "Sick";
@@ -75,7 +72,7 @@ class DashboardClass extends Component<{leaves: Leave[]},
       card!.type = "Planned";
     }
     this.setState({leavesArr: [...remaining, card!]});
-    console.log(this.state.leavesArr, card);
+    console.log(this.props.leaves, card);
   }
 
   createBtn(text: string, id: number) {
@@ -93,11 +90,11 @@ class DashboardClass extends Component<{leaves: Leave[]},
   render(): ReactNode {
     return (
      <div className={styles.Dashboard}>
-        <LeaveListClass type="Planned" leaves={this.state.leavesArr} actions={
+        <LeaveListClass type="Planned" leaves={this.props.leaves} actions={
           [(id) => this.mandatoryBtn(id), (id) => this.sickBtn(id)]} />
-        <LeaveListClass type="Mandatory" leaves={this.state.leavesArr} actions={
+        <LeaveListClass type="Mandatory" leaves={this.props.leaves} actions={
           [(id) => this.sickBtn(id), (id) => this.plannedBtn(id)]} />
-        <LeaveListClass type="Sick" leaves={this.state.leavesArr} actions={
+        <LeaveListClass type="Sick" leaves={this.props.leaves} actions={
           [(id) => this.mandatoryBtn(id), (id) => this.plannedBtn(id)]} />
       </div>
     );
