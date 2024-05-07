@@ -1,5 +1,5 @@
-import './App.css'
-import { Component } from 'react'
+import { Component } from 'react';
+import styles from './App.module.scss';
 
 class AppClass extends Component<{}, {count: number}> {
   
@@ -12,16 +12,20 @@ class AppClass extends Component<{}, {count: number}> {
     console.log(this);
   }
   
-  handleClick(){
+  handleClick() {
     console.log(this);
-    // this.setState({count: this.state.count + 1})
+    this.setState(prevState => ({
+      count: prevState.count + 1
+    }))
   }
 
   render() {
     return (
       <>
         {console.log("Render method", this)}
-        <button onClick={this.handleClick}>{this.state.count}</button>
+        <div className={styles.App}>
+          <button onClick={this.handleClick}>{this.state.count}</button>
+        </div>
       </>
     )
   }

@@ -1,0 +1,3 @@
+const outerObj = {
+  name: "Monson"
+}
