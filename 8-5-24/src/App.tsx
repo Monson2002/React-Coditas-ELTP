@@ -1,33 +1,72 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+import styles from './App.module.scss'
+import { pokemons } from './api/data';
 
-function App() {
-  const [count, setCount] = useState(0)
+import PokeList from './components/PokeList/PokeList'
+import axios from 'axios';
+
+const App = () => {
+
+  const [pokemonDataFromAPI, setPokemonDataFromAPI] = useState(pokemons);
+  // const [pokemonData, setPokemonData] = useState<boolean[] | null>(null);
+
+  useEffect(() => {
+    const fetchPokeData = async () => {
+      try {
+        const data = await axios.get(
+          'https://18be-47-247-159-210.ngrok-free.app/pokemons', {
+          headers: {
+            "ngrok-skip-browser-warning": "skip-browser-warning",
+          },
+        });
+        
+        const response = await data.data;
+        setPokemonDataFromAPI(response);
+        // handleCaughtLogic();
+        console.log(response);
+      } catch (error: any) {
+        if(error.response) {
+          console.log(error.response.message);
+          console.log(error.response.status);
+        } else {
+          console.log(error.message);
+        }
+      }
+    }
+
+    fetchPokeData();
+  }, [])
+
+  // const handleCaughtLogic = () => {
+  //   const pokemonWithCaughtData = pokemonDataFromAPI.map((obj) => obj.caught === true ? Math.random() > 0.5 : false)
+  //   console.log(pokemonWithCaughtData);
+    
+  //   setPokemonData(pokemonWithCaughtData);
+  // }
+
+  const handleMove = (id: number) => {
+    console.log(`HandleMove Clicked with ${id}`);
+    const foundPokemon = pokemonDataFromAPI.find((pokemon) => pokemon.id === id);
+    const otherPokemons = pokemonDataFromAPI.filter((pokemon) => pokemon.id !== id);
+    foundPokemon!.caught = !foundPokemon!.caught;
+    setPokemonDataFromAPI([...otherPokemons, foundPokemon!])
+  }
+
+  // console.log(pokemons, pokemonData);
+  
+  const moveBtn = (id: number) => {
+    return <button className={styles.Btn} onClick={() => handleMove(id)}>Move</button>
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <main className={styles.App}>
+        <h1>Poke List</h1>
+        <section className={styles.ContainerParent}>
+          <PokeList title="All" data={pokemonDataFromAPI.filter((pokemon) => !pokemon.caught)} move={moveBtn} />
+          <PokeList title="Caught" data={pokemonDataFromAPI.filter((pokemon) => pokemon.caught)} move={moveBtn} />
+        </section>
+      </main>
     </>
   )
 }

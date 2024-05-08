@@ -1,0 +1,13 @@
+.PokemonList { 
+    margin: .25rem;
+    padding: 1rem;
+    background-color: white;
+    width: calc(50vw);
+    text-align: center;
+    border-radius: .25rem;
+
+    .Header {
+        font-size: x-large;
+        color: var(--blue-coditas);
+    }
+} 
