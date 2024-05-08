@@ -31,17 +31,20 @@ class App extends Component<{}, {data: Data[]}> {
       data: [...counters]
     })
   } 
+
+  renderTimers() {
+    return (
+      this.state.data.map((item, index) => {
+        return !item.isComplete && <Card key={index} name={item.name} time={item.time} toRender={() => this.onComplete(item)}/>
+      })
+    )
+  }
   
   render(): ReactNode { 
-
-    const rendered = this.state.data.filter((item) => item.isComplete === false)
-    console.log(rendered);
     
     return (
       <div className={styles.App}>
-        {rendered.map((item, index) => {
-          return <Card key={index} name={item.name} time={item.time} toRender={() => this.onComplete(item)}/>
-        })}
+        {this.renderTimers()}
       </div>
     )
   }
