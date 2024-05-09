@@ -1,0 +1,14 @@
+.Main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    .Employee {
+        margin: .5rem;
+        font-size: 1rem;
+        height: calc(100vh - 6rem);
+        width: calc(100vw - 30vw);
+        display: flex;
+        flex-direction: column;
+    }
+}

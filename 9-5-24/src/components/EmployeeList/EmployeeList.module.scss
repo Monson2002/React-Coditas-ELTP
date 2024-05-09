@@ -1,0 +1,11 @@
+.EmployeeList { 
+    background-color: white;
+    margin: .5rem;
+    padding: 1rem;
+    font-size: 1rem;
+    height: calc(100vh - 6rem);
+    width: 30vw;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+} 

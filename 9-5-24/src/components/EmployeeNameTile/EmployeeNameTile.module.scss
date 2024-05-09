@@ -1,0 +1,18 @@
+.EmployeeNameTile { 
+    margin: .5rem 1rem;
+    padding: 1rem 2rem;
+    background-color: var(--bg-color);
+    text-align: center;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:hover {
+        border: thin solid black;
+    }
+
+    &:active {
+        background-color: var(--bg-color-hover);
+    }
+} 
