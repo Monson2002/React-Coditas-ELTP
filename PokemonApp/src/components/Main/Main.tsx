@@ -7,6 +7,7 @@ import ArrowCircleRightSharpIcon from '@mui/icons-material/ArrowCircleRightSharp
 import { PokemonProps } from "../Pokemon/Pokemon.types";
 import { MainProps } from "./Main.types";
 import PokemonList from "../PokemonList/PokemonList";
+import getPokemonData from '../../api/getPokemonDataAPI';
 
 const Main = ({ }: MainProps) => {
 
@@ -18,20 +19,10 @@ const Main = ({ }: MainProps) => {
   const allPokemon = pokemons.filter((pokemon) => !pokemon.caught);
   const caughtPokemon = pokemons.filter((pokemon) => pokemon.caught);
 
-  const getPokemonData = async () => {
-    const { data } = await axios.get('url', {
-      headers: {
-        "ngrok-skip-browser-warning": "skip-browser-warning",
-      }
-    });
-
-    setPokemons([
-      { id: 1, name: "Charmander", caught: false },
-      { id: 2, name: "Wobuffet", caught: false },
-      { id: 3, name: "Squirtle", caught: true },
-      { id: 4, name: "Charmeleon", caught: false },
-      { id: 5, name: "Charizard", caught: true },
-    ])
+  const getPokemonFromAPI = async () => {
+    const dataFromAPI = await getPokemonData();
+    setPokemons(dataFromAPI);  
+    
   }
 
   const handleToggleCaught = (idObject: any) => {
@@ -41,7 +32,7 @@ const Main = ({ }: MainProps) => {
   }
 
 useEffect(() => {
-  getPokemonData();
+  getPokemonFromAPI();
 }, [])
 
 return (
