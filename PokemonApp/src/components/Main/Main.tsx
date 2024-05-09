@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import styles from './Main.module.scss';
 import ArrowCircleLeftSharpIcon from '@mui/icons-material/ArrowCircleLeftSharp';
@@ -13,8 +12,8 @@ const Main = ({ }: MainProps) => {
 
   const [pokemons, setPokemons] = useState<PokemonProps[]>([]);
 
-  const LeftArrow = (id: number) => <ArrowCircleLeftSharpIcon onClick={() => handleToggleCaught(id)}/>
-  const RightArrow = (id: number) => <ArrowCircleRightSharpIcon onClick={() => handleToggleCaught(id)}/>
+  const LeftArrow = (idObj: {id: number}) => <ArrowCircleLeftSharpIcon onClick={() => handleToggleCaught(idObj)}/>
+  const RightArrow = (idObj: {id: number}) => <ArrowCircleRightSharpIcon onClick={() => handleToggleCaught(idObj)}/>
 
   const allPokemon = pokemons.filter((pokemon) => !pokemon.caught);
   const caughtPokemon = pokemons.filter((pokemon) => pokemon.caught);
@@ -25,7 +24,7 @@ const Main = ({ }: MainProps) => {
     
   }
 
-  const handleToggleCaught = (idObject: any) => {
+  const handleToggleCaught = (idObject: {id: number}) => {
     const selectedPokemon = pokemons.find((pokemon) => pokemon.id === idObject.id)!;
     selectedPokemon!.caught = !selectedPokemon.caught;
     setPokemons([...pokemons]);

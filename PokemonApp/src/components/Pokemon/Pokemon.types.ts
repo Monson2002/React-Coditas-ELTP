@@ -1,8 +1,8 @@
 export interface PokemonProps {
-    id: number; 
+    id: number;
     name: string;
     caught?: boolean;
-    handleClick?: any;
+    handleClick?: (idObj: { id: number }) => void;
     leadingBtn?: any;
     trailingBtn?: any;
 } 

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { PokemonProps } from '../components/Pokemon/Pokemon.types';
 
 const getPokemonData = async (): Promise<PokemonProps[]> => {
-  const { data } = await axios.get('url', {
+  const { data } = await axios.get('', {
     headers: {
       "ngrok-skip-browser-warning": "skip-browser-warning",
     }
