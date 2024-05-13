@@ -1,0 +1,39 @@
+.Parent {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(16, 14, 14, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .Modal {
+        max-width: 800px;
+        padding: 0 10px;
+        margin: auto;
+
+        .Form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: white;
+            height: 25rem;
+            width: 30rem;
+            border-radius: .25rem;
+            margin-left: 6rem;
+            div {
+                margin: 1rem;
+                margin-left: 6rem;
+
+                input {
+                    margin: 0 1rem;
+                }
+            }
+        }
+    }
+
+}

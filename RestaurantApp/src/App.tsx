@@ -15,9 +15,9 @@ import Restaurant from './components/Restaurant/Restaurant';
 
 function App() {
 
-  const [showLogin, setShowLogin] = useState<boolean>(true);
+  const [showLogin, setShowLogin] = useState<boolean>(false);
   const [showSignup, setShowSignup] = useState<boolean>(false);
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const [loggedIn, setLoggedIn] = useState<boolean>(true);
   const [restaurants, setRestaurants] = useState<RestaurantCardProps[]>([]);
   const [restaurantDetailPage, setRestaurantDetailPage] = useState<RestaurantCardProps[]>([]);
 
@@ -71,6 +71,8 @@ function App() {
 
   const getRestaurantsDataFromAPI = async () => {
     const data = await getRestaurantsAPI();
+    console.log(data);
+    
     setRestaurants(data);
   }
 

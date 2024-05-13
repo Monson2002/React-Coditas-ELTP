@@ -8,6 +8,6 @@ export interface RestaurantCardProps {
     description: string;
     feedback: string;
     rating: number;
-    restaurantDetailPage: RestaurantCardProps[];
-    onclick: Dispatch<SetStateAction<RestaurantProps[]>>;
+    restaurantDetailPage?: RestaurantCardProps[];
+    onclick?: Dispatch<SetStateAction<RestaurantProps[]>>;
 } 
