@@ -1,0 +1,21 @@
+.Navbar { 
+    font-size: large;
+    padding: 1rem 2rem;
+    background-color: rgb(203 213 225);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .Icons {
+        margin: 0 1rem;
+
+        i {
+            margin: 0 1rem;
+            transform: scale(1.2);
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+} 

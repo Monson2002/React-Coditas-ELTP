@@ -1,0 +1,20 @@
+.RestaurantCard { 
+    max-width: 25vw;
+    margin: 1rem;
+
+    &:hover {
+        transform: scale(1.003);
+        cursor: pointer;
+    }
+
+    .Flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+} 
+
+.OnModal {
+    opacity: 10%; 
+}

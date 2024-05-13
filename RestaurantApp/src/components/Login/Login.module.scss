@@ -1,0 +1,33 @@
+.Login { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;    
+
+    .FormInput {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 35vw;
+        background-color: white;
+        padding: 2rem;
+        border-radius: 1rem;
+
+        .TextField {
+            margin: 0.5rem 0;
+        }
+
+        .Btn {
+            margin-top: 2rem;
+        }
+
+        .LoginSignupLink {
+            width: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+    }
+} 

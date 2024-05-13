@@ -1,0 +1,37 @@
+.Restaurant {
+    position: fixed;
+    margin: auto;
+    padding: 2rem;
+    height: 90vh;
+    max-width: 90vw;
+    top: 5vh;
+    left: 5vw;
+    background-color: white;
+
+    .Container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .Img {
+            max-width: 20vw;
+        }
+
+        .Header {
+            margin: 1rem;
+        }
+
+        .Flex {
+            margin: 1rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: -webkit-fill-available;
+        }
+
+        textarea {
+            width: 40vw;
+        }
+    }
+}
