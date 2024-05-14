@@ -15,9 +15,9 @@ import Restaurant from './components/Restaurant/Restaurant';
 
 function App() {
 
-  const [showLogin, setShowLogin] = useState<boolean>(false);
+  const [showLogin, setShowLogin] = useState<boolean>(true);
   const [showSignup, setShowSignup] = useState<boolean>(false);
-  const [loggedIn, setLoggedIn] = useState<boolean>(true);
+  const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const [restaurants, setRestaurants] = useState<RestaurantCardProps[]>([]);
   const [restaurantDetailPage, setRestaurantDetailPage] = useState<RestaurantCardProps[]>([]);
 
@@ -84,10 +84,13 @@ function App() {
     <>
       <div className={styles.App}>
         {showLogin && <Login toggleLogin={toggleStates} loginUser={loginUser} />}
+
         {showSignup && <Signup toggleLogin={toggleStates} signupUser={signupUser} />}
+        
         {loggedIn && <HomePage restaurants={restaurants} setLoggedIn={setLoggedIn} setShowLogin={setShowLogin} 
         restaurantDetailPage={restaurantDetailPage} setRestaurantDetailPage={setRestaurantDetailPage}/>}
-        {restaurantDetailPage.length > 0 && <Restaurant name={restaurantDetailPage[0].name} imgSrc={restaurantDetailPage[0].imgSrc} address={restaurantDetailPage[0].address} description={restaurantDetailPage[0].description} feedback={restaurantDetailPage[0].feedback} rating={restaurantDetailPage[0].rating}/>}
+
+        {restaurantDetailPage.length > 0 && <Restaurant restaurantDetailPage={restaurantDetailPage[0]} setRestaurantDetailPage={setRestaurantDetailPage}/>}
       </div>
     </>
   )

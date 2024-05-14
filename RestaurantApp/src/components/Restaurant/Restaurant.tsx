@@ -1,22 +1,30 @@
-import { RestaurantProps } from "./Restaurant.types";
+import { RestaurantDetailPageProps, RestaurantProps } from "./Restaurant.types";
 import styles from './Restaurant.module.scss';
 import { useState } from 'react';
 
 import { Typography } from "@mui/material";
 import Rating from '@mui/material/Rating';
+import CloseIcon from '@mui/icons-material/Close';
+import Button from '@mui/material/Button';
 
-const Restaurant = ({ name, imgSrc, address, description, feedback, rating }: RestaurantProps) => {
+const Restaurant = ({ restaurantDetailPage, setRestaurantDetailPage }: RestaurantDetailPageProps) => {
+
+  const {name, imgSrc, address, description, feedback, rating} = restaurantDetailPage;  
 
   const [value, setValue] = useState(feedback);
-  const [userRating, setUserRating] = useState(rating);
+  const [userRating, setUserRating] = useState<number>(rating);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const inputValue = e.target.value;
     setValue(inputValue);
   }
 
-  const handleRatingChange = (newValue: number) => {
-    setUserRating(newValue);
+  const handleRatingChange = (e: React.SyntheticEvent<Element, Event>, newValue: number|null) => {
+    if (typeof newValue === 'number') {
+      setUserRating(newValue);
+    } else {
+      throw console.error('NewValue is null ', newValue);
+    }
   }
 
   const handleSubmit = (e: React.ChangeEvent<HTMLTextAreaElement>, value: string, userRating: number) => {
@@ -32,6 +40,7 @@ const Restaurant = ({ name, imgSrc, address, description, feedback, rating }: Re
   return (
     <div className={styles.Restaurant}>
       <div className={styles.Container}>
+        <CloseIcon className={styles.CloseIcon} onClick={() => setRestaurantDetailPage([])}/>
         <img className={styles.Img} src={imgSrc} alt="" />
         <div className={styles.Header}>
           <Typography
@@ -90,9 +99,9 @@ const Restaurant = ({ name, imgSrc, address, description, feedback, rating }: Re
             <Rating
               name="simple-controlled"
               value={userRating}
-              onChange={(e: React.SyntheticEvent<Element, Event>, newValue: any) => handleRatingChange(newValue)}
+              onChange={(e: React.SyntheticEvent<Element, Event>, newValue: number|null) => handleRatingChange(e, newValue)}
             />
-            <button type="submit">Submit</button>
+            <Button type="submit" variant="contained">Submit</Button>
           </div>
         </form>
       </div>

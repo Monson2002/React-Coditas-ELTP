@@ -7,6 +7,11 @@ export interface RestaurantProps {
     rating: number;
 } 
 
+export interface RestaurantDetailPageProps {
+    restaurantDetailPage: RestaurantProps;
+    setRestaurantDetailPage: any;
+}
+
 export interface Inputs {
     rating: number;
     feedback: string;
